@@ -31,6 +31,12 @@ RUN apt-get remove -y \
     zlib1g-dev
 
 RUN apt-get -y autoremove
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --fix-missing \
+    liblmdb0            \
+    libyajl2            \
+    libgeoip1
+
 RUN rm -rf /build
 
 COPY conf.tar.gz /opt/spider

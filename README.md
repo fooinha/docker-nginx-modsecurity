@@ -14,4 +14,6 @@ Dockerfiles for nginx with modsecurity module
 ### latest
 
  - Runs nginx on non daemon mode with modsecurity enabled and with recommended rules file loaded.
- 
+
+### Create Docker container
+ - docker create -p 8888:80 -t --name ninja fooinha/nginx-modsecurity 
