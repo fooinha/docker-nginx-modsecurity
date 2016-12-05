@@ -33,9 +33,10 @@ RUN apt-get remove -y \
 RUN apt-get -y autoremove
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --fix-missing \
+    libgeoip1           \
     liblmdb0            \
     libyajl2            \
-    libgeoip1
+    libxml2
 
 RUN rm -rf /build
 
