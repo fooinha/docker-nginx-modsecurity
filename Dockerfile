@@ -31,9 +31,12 @@ RUN apt-get remove -y \
     zlib1g-dev
 
 RUN apt-get -y autoremove
-
 RUN rm -rf /build
+
+COPY conf.tar.gz /opt/spider
+WORKDIR /opt/spider
+RUN tar zxvf conf.tar.gz
 
 EXPOSE 80
 
-CMD ["/opt/spider/sbin/nginx", "-g", "daemon off;"]
+CMD ["/opt/spider/sbin/nginx"]

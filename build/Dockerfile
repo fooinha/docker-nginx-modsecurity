@@ -72,13 +72,4 @@ RUN cd nginx-* && ./configure --add-module=/build/ModSecurity-nginx/ --prefix=${
 #Install nginx
 RUN cd nginx-* && make && make install
 
-#Configure nginx
-RUN cp -v /build/ModSecurity/modsecurity.conf-recommended "${PREFIX}/conf/modsecurity.conf"
-RUN sed -i -e 's|SecAuditLog /var/log/modsec_audit.log|SecAuditLog /opt/spider/logs/modsec_audit.log|' \
-     "${PREFIX}/conf/modsecurity.conf"
-
-RUN sed -i -e 's|listen.* 80;$|listen 80;\n\tmodsecurity on;|g' "${PREFIX}/conf/nginx.conf"
-RUN sed -i -e 's|^( )+location \/ {$|location \/ {\n\t    modsecurity_rules_file '"${PREFIX}"'/conf/modsecurity.conf;|g' "${PREFIX}/conf/nginx.conf"
-
-#Test nginx configuration
-CMD ["/opt/spider/sbin/nginx", "-T"]
+CMD ["/bin/bash"]
