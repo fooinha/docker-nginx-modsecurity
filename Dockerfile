@@ -1,4 +1,4 @@
-FROM nginx-modsecurity:build
+FROM fooinha/nginx-modsecurity:build
 MAINTAINER fooinha <fooinha@gmail.com>
 ARG MAINTANER_NAME=fooinha
 ARG MAINTANER_EMAIL=fooinha@gmail.com
